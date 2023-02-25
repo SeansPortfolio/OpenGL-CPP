@@ -3,9 +3,11 @@
 #include "Renderer.h"
 #include "Window.h"
 #include "EventManager.h"
-
-#include "Shader.h"
 #include "ResourceLoader.h"
+#include "SceneManager.h"
+
+#include "Entity.h"
+#include "Camera.h"
 
 
 #include <glm.hpp>
@@ -34,6 +36,8 @@ private:
 	Renderer renderer;
 
 	EventManager eventManager;
+
+	SceneManager sceneManager;
 
 	std::shared_ptr<Shader> shader;
 

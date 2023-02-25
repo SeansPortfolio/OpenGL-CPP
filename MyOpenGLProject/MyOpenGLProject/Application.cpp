@@ -31,12 +31,16 @@ void Application::Run()
     renderer.SetViewport(0, 0, window.Width, window.Height);
     renderer.SetClearColor(0.3, 0.4, 0.8, 1.0);
 
+    auto cubeEntity = std::make_unique<Entity>();
+
+    auto cameraEntity = std::make_unique<Entity>();
+    auto camera = cameraEntity->AddComponent<Camera>();
+
 	while (m_isRunning)
 	{
-
         glm::mat4 modelMat = glm::mat4(1.0f);
-        glm::mat4 viewMat = glm::lookAt(glm::vec3(0, 5, -10), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
-        glm::mat4 projectionMat = glm::perspective(glm::radians(60.0f), (float)window.Width / (float)window.Height, 0.1f, 1000.0f);
+        glm::mat4 viewMat = camera->GetLookAt();
+        glm::mat4 projectionMat = camera->GetProjection((float)window.Width, (float)window.Height);
 
         renderer.Clear();
 
