@@ -18,8 +18,6 @@ std::string ResourceLoader::ReadFileText(const char* path)
 	}
 
 	file.close();
-	std::cout << fullText << std::endl;
-
 	return fullText;
 }
 

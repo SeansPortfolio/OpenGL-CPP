@@ -21,7 +21,7 @@ public:
 
 	void OnUpdate(float dt);
 
-	void OnRender();
+	void OnRender(glm::mat4 view, glm::mat4 projection);
 
 	void AddChild(std::shared_ptr<Entity> child);
 
@@ -30,7 +30,7 @@ public:
 	{
 		static_assert(std::is_base_of<Component, T>::value, "T must derive from Base");
 
-		auto newComponent = std::shared_ptr<T>();
+		auto newComponent = std::make_shared<T>();
 		Components.push_back(newComponent);
 		return newComponent;
 	}

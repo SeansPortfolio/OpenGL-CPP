@@ -8,7 +8,7 @@
 
 #include "Entity.h"
 #include "Camera.h"
-
+#include "ModelRenderer.h"
 
 #include <glm.hpp>
 #include <gtc/matrix_transform.hpp>
@@ -38,12 +38,6 @@ private:
 	EventManager eventManager;
 
 	SceneManager sceneManager;
-
-	std::shared_ptr<Shader> shader;
-
-	std::shared_ptr<Texture> texture;
-
-	std::shared_ptr<Model> model;
 
 };
 
