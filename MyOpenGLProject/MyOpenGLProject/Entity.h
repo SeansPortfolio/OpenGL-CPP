@@ -21,7 +21,7 @@ public:
 
 	void OnUpdate(float dt);
 
-	void OnRender(glm::mat4 view, glm::mat4 projection);
+	void OnRender(glm::mat4 parentModel, glm::mat4 view, glm::mat4 projection);
 
 	void AddChild(std::shared_ptr<Entity> child);
 

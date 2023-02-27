@@ -5,7 +5,7 @@ Entity::Entity()
 	transform = AddComponent<Transform>();
 
 	transform->Position = glm::vec3(0, 0, 0);
-	transform->Rotation = glm::vec3(45, 45, 0);
+	transform->Rotation = glm::vec3(0, 0, 0);
 	transform->Scale = glm::vec3(1, 1, 1);
 }
 
@@ -22,16 +22,18 @@ void Entity::OnUpdate(float dt)
 	}
 }
 
-void Entity::OnRender(glm::mat4 view, glm::mat4 projection)
+void Entity::OnRender(glm::mat4 parentModel, glm::mat4 view, glm::mat4 projection)
 {
+	auto globalModelMatrix = parentModel * transform->GetModelMatrix();
+
 	for (auto component : Components)
 	{
-		component->OnRender(transform->GetModelMatrix(), view, projection);
+		component->OnRender(globalModelMatrix, view, projection);
 	}
 
 	for (auto entity : Children)
 	{
-		entity->OnRender(view, projection);
+		entity->OnRender(globalModelMatrix, view, projection);
 	}
 }
 

@@ -27,6 +27,12 @@ public:
 
 private:
 
+	void CreateScene();
+
+	void UpdateFrame(float dt);
+
+	void RenderFrame();
+
 	void OnWindowClose(QuitEvent& eve);
 
 	bool m_isRunning;
@@ -38,6 +44,10 @@ private:
 	EventManager eventManager;
 
 	SceneManager sceneManager;
+
+	std::shared_ptr<Entity> centerCube;
+
+	std::shared_ptr<Camera> mainCamera;
 
 };
 
